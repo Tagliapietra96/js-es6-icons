@@ -1,0 +1,23 @@
+.my-card{
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    aspect-ratio: 1/1;
+    box-shadow: 1px 1px 1px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue{
+    color: blue;
+}
+
+.orange{
+    color: orange;
+}
+
+.green{
+    color: green;
+}
