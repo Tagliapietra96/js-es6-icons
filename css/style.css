@@ -1,3 +1,10 @@
+:root{
+    --orange: #000000;
+    --blue: #000000;
+    --green: #000000;
+}
+
+
 .my-card{
     width: 100%;
     background-color: white;
@@ -11,13 +18,13 @@
 }
 
 .blue{
-    color: blue;
+    color: var(--blue);
 }
 
 .orange{
-    color: orange;
+    color: var(--orange);
 }
 
 .green{
-    color: green;
+    color: var(--green);
 }

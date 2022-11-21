@@ -42,6 +42,43 @@ function elGenerator(type, class1, class2, class3) {
     return newElement;
 };
 
+/**
+ * Genera un numero random compreso o uguale a min e max, 
+ * se i valori non vengono specificati il generatore darà come output o 1 o 0
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number}
+ */
+function randomNum(min, max) {
+    if (min === undefined && max === undefined) {
+        min = 0;
+        max = 1;
+    };
+    if (min < max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else {
+        return Math.floor(Math.random() * (min - max + 1)) + max;
+    };
+};
+
+/**
+ * funzione che genera in maniera randomica un colore in codice hex 
+ * @returns {string}
+ */
+function randomHexColor() {
+    let colorRange = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+    let finalColor = ['#'];
+
+    for (i = 0; i < 6; i++){
+        finalColor.push(colorRange[randomNum(0, 15)]);
+    };
+    return finalColor.join('');
+}
+
+
+el(':root').style.setProperty('--orange', randomHexColor());
+el(':root').style.setProperty('--blue', randomHexColor());
+el(':root').style.setProperty('--green', randomHexColor());
 
 
 
@@ -175,4 +212,35 @@ icons.forEach((element, i) => {
     cardEl.append(iconEl, nameEl);
     colEl.append(cardEl);
     el('.row-cols-5').append(colEl);
+
+    if (!types.includes(element.type)) {
+        types.push(element.type);
+    }
 });
+
+types.forEach((element) => {
+    let optionEl = elGenerator('option');
+    optionEl.value = element;
+    optionEl.innerHTML = element;
+    el('select').append(optionEl);
+});
+
+let cardList = document.querySelectorAll('.row-cols-5 .col');
+
+el('select').addEventListener('change', function () {
+    if (this.value === 'all') {
+        cardList.forEach((element) => {
+            element.classList.remove('d-none');
+        });
+    } else {
+        cardList.forEach((element) => {
+            if (element.classList.contains(this.value)) {
+                element.classList.remove('d-none');
+            } else {
+                element.classList.add('d-none');
+            }
+        });
+    }
+
+});
+
