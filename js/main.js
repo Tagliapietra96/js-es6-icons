@@ -202,7 +202,7 @@ const icons = [
 
 const types = [];
 
-icons.forEach((element, i) => {
+icons.forEach((element) => {
     let colEl = elGenerator('div', 'col', `${element.type}`);
     let cardEl = elGenerator('div', 'my-card');
     let iconEl = elGenerator('i', `${element.family}`, `${element.prefix}${element.name}`, `${element.color}`);
